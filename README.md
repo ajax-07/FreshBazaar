@@ -34,8 +34,7 @@ Instead of walking from stall to stall, customers can **see live product rates**
 - `docs/`: Design docs, architecture diagrams, and API specs.
 - `shared-config/`: Environment variable templates, logging configs, and secret templates.
 - `deploy/`: Dockerfiles, docker-compose, Kubernetes manifests, and deployment scripts.
-- `ci-cd/`: CI/CD pipeline configs and integration files for SonarQube, Veracode, and Splunk.
-- `.github/workflows/`: GitHub Actions workflows for automation.
+- `.github/workflows/`: GitHub Actions workflows for CI/CD.
 
 -----------------------
 
