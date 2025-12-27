@@ -1,0 +1,36 @@
+name: FreshBazaar CI
+
+on:
+  push:
+    branches: [master]
+
+jobs:
+  # Job 1: Build and Test Backend
+  build-backend:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up JDK 21
+        uses: actions/setup-java@v3
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+      - name: Grant execute permission for gradlew
+        # run: chmod +x backend/gradlew
+        # This will fail until we actually generate the Spring Boot project in Phase 1
+        # For Phase 0, we just echo a success message for now
+        run: echo "Backend Build Placeholder - Success" 
+
+  # Job 2: Build and Test Frontend
+  build-frontend:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      - name: Install Dependencies
+        # This acts as a placeholder until package.json exists
+        # just echoing a success message for now
+        run: echo "Frontend Install Placeholder - Success"
