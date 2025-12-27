@@ -36,7 +36,7 @@ Instead of walking from stall to stall, customers can **see live product rates**
 - `deploy/`: Dockerfiles, docker-compose, Kubernetes manifests, and deployment scripts.
 - `.github/workflows/`: GitHub Actions workflows for CI/CD.
 
------------------------
+------------------------------
 
 ## 🏗️ Architecture
 
