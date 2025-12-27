@@ -2,13 +2,7 @@ name: FreshBazaar CI
 
 on:
   push:
-    branches:
-      - "master"
-  pull_request:
-    branches:
-      - "master"
-    types:
-      - closed
+    branches: [master]
 
 jobs:
   # Job 1: Check Backend
