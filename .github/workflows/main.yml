@@ -140,10 +140,9 @@ jobs:
   # Simulates deployment to "DockerHub" only if build/tests pass
   # ------------------------------------------------------------------
   mock-deploy:
-    name: Deploy to DockerHub
+    name: Deploy to docker
     runs-on: ubuntu-latest
     needs: [backend-ci, frontend-ci, quality-gate] # Waits for previous jobs to finish
-    if: github.ref == 'refs/heads/master'  # Only deploy from 'dev' branch
     
     steps:
       # - name: Docker Login
