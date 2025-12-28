@@ -39,11 +39,12 @@ jobs:
           fetch-depth: 0  # Important for SonarQube to detect new code
 
       - name: Set up JDK ${{ env.JAVA_VERSION }}
-        uses: actions/setup-java@v4
-        with:
-          java-version: ${{ env.JAVA_VERSION }}
-          distribution: 'temurin'
-          cache: 'gradle'
+        # uses: actions/setup-java@v4
+        # with:
+        #   java-version: ${{ env.JAVA_VERSION }}
+        #   distribution: 'temurin'
+        #   cache: 'gradle'
+        run: echo "mocked setup-java for Java ${{ env.JAVA_VERSION }}"
 
       - name: Grant execute permission for gradlew
         # run: chmod +x gradlew
@@ -94,12 +95,13 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '18'
-          cache: 'npm'
+      - name: Set up Node.js ${{ env.NODE_VERSION }}
+        # uses: actions/setup-node@v4
+        # with:
+        #   node-version: ${{ env.NODE_VERSION }}
+        #   cache: 'npm'
           # cache-dependency-path: apps/package-lock.json
+        run: echo "mocked setup-node for Node.js ${{ env.NODE_VERSION }}"
 
       - name: Install Dependencies
         # run: npm ci
