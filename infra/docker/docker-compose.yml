@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  # --- INFRASTRUCTURE (Database) ---
+  postgres:
+    image: postgres:15-alpine
+    container_name: freshbazaar-db
+    environment:
+      POSTGRES_USER: fb_user
+      POSTGRES_PASSWORD: fb_password
+      POSTGRES_DB: freshbazaar
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - fb-network
+
+  # --- BACKEND SERVICES (Uncomment later when code exists) ---
+  # auth-service:
+  #   build: ../../services/auth-service  # Points to the Dockerfile above
+  #   container_name: fb-auth
+  #   ports:
+  #     - "8081:8081"
+  #   environment:
+  #     SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/freshbazaar
+  #     SPRING_DATASOURCE_USERNAME: fb_user
+  #     SPRING_DATASOURCE_PASSWORD: fb_password
+  #   depends_on:
+  #     - postgres
+  #   networks:
+  #     - fb-network
+
+  # product-service:
+  #   build: ../../services/product-service
+  #   ... (similar to auth-service)
+
+volumes:
+  postgres_data:
+
+networks:
+  fb-network:
+    driver: bridge
