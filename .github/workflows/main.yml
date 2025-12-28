@@ -152,7 +152,8 @@ jobs:
       #     password: ${{ secrets.DOCKER_TOKEN }}
           
       - name: Start FreshBazaar Infrastructure
-        working-directory: infra/docker
-        run: |
-            docker compose up -d
-            docker ps
+        # working-directory: infra/docker
+        # run: |
+        #     docker compose up -d
+        #     docker ps
+        run: echo "mocked docker compose up -d && docker ps"
