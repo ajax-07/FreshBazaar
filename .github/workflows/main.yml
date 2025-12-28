@@ -65,6 +65,7 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
           args: >
+            -Dsonar.organization=ajax-07
             -Dsonar.projectKey=ajax-07_FreshBazaar
             -Dsonar.sources=.
       
