@@ -78,6 +78,8 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Important for SonarQube to detect new code
 
       - name: Set up Node.js ${{ env.NODE_VERSION }}
         # uses: actions/setup-node@v4
@@ -132,7 +134,7 @@ jobs:
         #     -Dsonar.exclusions=**/test/**,**/docs/**
         run: echo "mocked SonarQube scan"
 
-        
+
   # ------------------------------------------------------------------
   # JOB 3: MOCK DEPLOY
   # Simulates deployment to "DockerHub" only if build/tests pass
@@ -144,18 +146,11 @@ jobs:
     if: github.ref == 'refs/heads/master'  # Only deploy from 'dev' branch
     
     steps:
-      - name: Docker Login
-        uses: docker/login-action@v2
-        with:
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_TOKEN }}
-
-      - name: Build Docker Images and Push
-        run: |
-          docker build \
-            -f infra/docker/Dockerfile.mock \
-            -t ${{ secrets.DOCKER_USERNAME }}/freshbazaar-mock:latest .
-          docker push ${{ secrets.DOCKER_USERNAME }}/freshbazaar-mock:latest
+      # - name: Docker Login
+      #   uses: docker/login-action@v2
+      #   with:
+      #     username: ${{ secrets.DOCKER_USERNAME }}
+      #     password: ${{ secrets.DOCKER_TOKEN }}
           
       - name: Start FreshBazaar Infrastructure
         working-directory: infra/docker
