@@ -5,9 +5,10 @@ services:
   postgres:
     image: postgres:15-alpine
     container_name: freshbazaar-db
+    restart: unless-stopped
     environment:
-      POSTGRES_USER: fb_user
-      POSTGRES_PASSWORD: fb_password
+      POSTGRES_USER: freshbazaar_user
+      POSTGRES_PASSWORD: fb8EHjuZU56aerFpPiDbpssWrd
       POSTGRES_DB: freshbazaar
     ports:
       - "5432:5432"
@@ -37,6 +38,7 @@ services:
 
 volumes:
   postgres_data:
+    driver: local
 
 networks:
   fb-network:

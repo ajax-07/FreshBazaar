@@ -1,0 +1,25 @@
+-- Create the user_credential Table
+
+CREATE TABLE IF NOT EXISTS user_credential (
+    id                UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    username          VARCHAR(100) NOT NULL UNIQUE,
+    password_hash     VARCHAR(255) NOT NULL,
+    active            BOOLEAN NOT NULL, DEFAULT TRUE,
+    -- Auditing
+    created_at        TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    created_by        VARCHAR(100),
+    last_modified_at  TIMESTAMP,
+    last_modified_by  VARCHAR(100)
+);
+
+-- Indexes (Query-Driven)
+CREATE INDEX idx_user_credential_username ON user_credential(username);
+CREATE INDEX idx_user_credential_active ON user_credential(active);
+
+-- Comments
+COMMENT ON TABLE user_credential IS 'Authentication credential only (no business roles)';
+COMMENT ON COLUMN user_credential.username IS 'Unique Login identifier';
+COMMENT ON COLUMN user_credential.password_hash IS 'BCrypt hashed password';
+
+
+
