@@ -1,4 +1,6 @@
 package com.freshbazaar.identity.dto;
 
-public class AuthResponse {
-}
+public record AuthResponse(
+        String accessToken,
+        long expiresIn
+) {}

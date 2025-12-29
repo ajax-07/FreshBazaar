@@ -1,4 +1,8 @@
 package com.freshbazaar.identity.dto;
 
-public class RegisterRequest {
-}
+import jakarta.validation.constraints.NotBlank;
+
+public record RegisterRequest(
+        @NotBlank String username,
+        @NotBlank String password
+) {}

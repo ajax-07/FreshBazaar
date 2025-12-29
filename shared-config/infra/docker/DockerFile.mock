@@ -1,4 +1,0 @@
-FROM alpine:latest
-WORKDIR /app
-RUN echo "FreshBazaar mock container running 🚀" > status.txt
-CMD ["sh", "-c", "cat status.txt && sleep 3600"]
