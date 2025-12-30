@@ -1,0 +1,25 @@
+server:
+  port: 8082
+
+spring:
+  application:
+    name: user-service-api
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/freshbazaar?currentSchema=user_service_api
+    username: freshbazaar_user
+    password: fb8EHjuZU56aerFpPiDbpssWrd
+
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+    schemas: user_service_api
+    default-schema: user_service_api
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
+
+
+
