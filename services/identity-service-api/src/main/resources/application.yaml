@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: idenity-service-api
+    name: identity-service-api
 
   datasource:
     url: jdbc:postgresql://localhost:5432/freshbazaar?currentSchema=identity_service_api

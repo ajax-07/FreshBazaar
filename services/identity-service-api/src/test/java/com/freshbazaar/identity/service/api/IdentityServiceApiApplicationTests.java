@@ -1,10 +1,10 @@
-package com.freshbazaar.idenity_service_api;
+package com.freshbazaar.identity.service.api;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class IdenityServiceApiApplicationTests {
+class IdentityServiceApiApplicationTests {
 
 	@Test
 	void contextLoads() {
