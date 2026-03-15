@@ -1,7 +1,0 @@
-.gradle
-build
-out
-.gitattributes
-.idea
-.gitignore
-*.DS_store
