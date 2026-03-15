@@ -8,6 +8,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.PrePersist;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -17,7 +19,8 @@ import lombok.experimental.SuperBuilder;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-@Entity(name = "refresh_token")
+@Entity
+@Table(name = "refresh_token")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -41,4 +44,22 @@ public class RefreshToken {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "identity_id", nullable = false)
     private Identity identity;
+
+    // Audit fields
+    @Column(name = "created_at", nullable = false, updatable = false)
+    private LocalDateTime createdAt;
+
+
+    @PrePersist
+    protected void onCreate() {
+        createdAt = LocalDateTime.now();
+    }
+
+    public boolean isExpired() {
+        return LocalDateTime.now().isAfter(expiresAt);
+    }
+
+    public boolean isValid() {
+        return !revoked && !isExpired();
+    }
 }
